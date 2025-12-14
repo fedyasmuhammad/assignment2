@@ -206,6 +206,7 @@ class Add_Task extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+               maxLines: 2,
               controller: title,
               decoration: InputDecoration(
                 labelText: "Title",
@@ -220,12 +221,14 @@ class Add_Task extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 50),
             TextField(
               controller: desc,
+               maxLines: 4,
               decoration: InputDecoration(
-                hintMaxLines: 4,
+               
                 labelText: "Description",
+                
                 labelStyle: TextStyle(color: Colors.orange),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.orange, width: 2),
@@ -237,7 +240,7 @@ class Add_Task extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 50),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange,
