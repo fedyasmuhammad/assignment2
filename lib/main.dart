@@ -21,9 +21,11 @@ void main() {
 
 // ============ THEME CONTROLLER ============
 class ThemeController extends GetxController {
+ 
+ 
   var isDark = false.obs;
 
-  void toggleTheme() {
+ void toggleTheme() {
     isDark.value = !isDark.value;
     Get.changeTheme(isDark.value ? ThemeData.dark() : ThemeData.light());
   }
@@ -114,7 +116,15 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-// ============ TASK CONTROLLER ============
+
+
+
+
+
+
+
+
+// ============ TASK Manager ============
 class TaskController extends GetxController {
   var tasks = [].obs;
 
@@ -126,6 +136,13 @@ class TaskController extends GetxController {
     tasks.removeAt(index);
   }
 }
+
+
+
+
+
+
+
 
 // ============ TASK MANAGER ============
 class Task_Manager extends StatelessWidget {
@@ -158,8 +175,10 @@ class Task_Manager extends StatelessWidget {
       ),
       body: Obx(() {
         if (controller.tasks.isEmpty) {
-          return Center(child: Text("No Tasks Yet"));
+          return Center(child: Text("No Tasks Yetttttttttttttttttt"));
         }
+
+        
         return ListView.builder(
           itemCount: controller.tasks.length,
           itemBuilder: (_, index) {
@@ -187,6 +206,15 @@ class Task_Manager extends StatelessWidget {
   }
 }
 
+
+
+
+
+
+
+
+
+
 // ============ ADD TASK ============
 class Add_Task extends StatelessWidget {
   @override
@@ -197,7 +225,7 @@ class Add_Task extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Task"),
+        title: Text("Add Taskkkkkkkkkk"),
         backgroundColor: Color.fromARGB(255, 201, 121, 0),
         foregroundColor: Colors.white,
       ),
@@ -224,7 +252,7 @@ class Add_Task extends StatelessWidget {
             SizedBox(height: 50),
             TextField(
               controller: desc,
-               maxLines: 4,
+               maxLines: 7,
               decoration: InputDecoration(
                
                 labelText: "Description",
@@ -251,11 +279,28 @@ class Add_Task extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                if (title.text.isNotEmpty) {
-                  controller.addTask(title.text, desc.text);
-                  Get.back();
-                }
-              },
+  if (title.text.isNotEmpty) {
+     controller.addTask(title.text, desc.text);
+    Get.back();
+     Get.snackbar(
+      
+      "sucsufuly",                 // title
+      "Task added sucsufuly ",   // message
+      backgroundColor: const Color.fromARGB(255, 9, 153, 48),
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
+   
+  } else {
+    Get.snackbar(
+      "Warning",                 // title
+      "Title cannot be empty",   // message
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
+},
               child: Text("Add Task", style: TextStyle(fontSize: 16)),
             ),
           ],
